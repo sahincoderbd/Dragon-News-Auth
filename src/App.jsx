@@ -1,13 +1,14 @@
 
+import { Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
   
 
   return (
-    <>
-    <h2>React Dragon News Auth</h2>
-    </>
+    <div className='container mx-auto px-2 lg:px-0'>
+    <Outlet></Outlet>
+    </div>
   )
 }
 
