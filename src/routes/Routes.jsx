@@ -4,6 +4,7 @@ import Home from "../Pages/Home.jsx";
 import About from "../Pages/About.jsx";
 import Career from "../Pages/Career.jsx";
 import ErrorPage from "../Pages/ErrorPage.jsx";
+import NewsDetails from "../Components/NewsDetails.jsx";
 
 const routes =createBrowserRouter([
     {
@@ -22,6 +23,19 @@ const routes =createBrowserRouter([
             {
                 path:'/career',
                 element:<Career></Career>
+            },
+            {
+                path:'/news/:_id',
+                element:<NewsDetails></NewsDetails>,
+                loader: async({params})=>{
+                 const response = await fetch(`https://openapi.programming-hero.com/api/news/${params._id}`)
+                  if(!response.ok){
+                    throw new Error('Failed to fetch news details');
+                  }
+                  const data =await response.json();
+                  return data.data;
+                }
+                   
             },
         ]
     }
