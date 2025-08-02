@@ -31,9 +31,9 @@ const LeftSideNav = () => {
     return (
         <div>
             <div>
-            <ul className='left-side-categorylist space-y-1 '>
+            <ul className='left-side-categorylist space-y-1 mb-3 '>
             {
-                categories.map(category=> <li onClick={()=>handleFilterCategory(category.category_name)} className='py-2 px-3 active:bg-[#E7E7E7] hover:bg-[#E7E7E7] rounded-sm' key={category.category_id}>
+                categories.map(category=> <li onClick={()=>handleFilterCategory(category.category_name)} className='py-2 px-3 active:bg-[#E7E7E7] dark:active:bg-gray-600 hover:bg-[#E7E7E7] dark:hover:bg-gray-600 rounded-sm' key={category.category_id}>
                     <Link className='w-full py-2'>{category.category_name}</Link>
                     </li>)
             }

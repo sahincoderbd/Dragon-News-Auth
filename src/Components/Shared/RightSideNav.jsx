@@ -27,11 +27,11 @@ const RightSideNav = () => {
             </div>
             <div className='flex flex-col gap-3'>
                 <h4 className='font-bold'>Find Us on</h4>
-                <div className='border-2 border-gray-300 rounded-md'>
-                    <div className='flex gap-2 items-center flex-nowrap border-b-2 border-gray-300 py-3 pl-4'>
+                <div className='border border-gray-300 dark:border-gray-600 rounded-md'>
+                    <div className='flex gap-2 items-center flex-nowrap border-b border-gray-300 dark:border-gray-600 py-3 pl-4'>
                     <img className='' src={facebook} alt="Facebook" /><a href="#">Facebook</a>
                     </div>
-                    <div className='flex gap-2 items-center flex-nowrap border-b-2 border-gray-300 py-3 pl-4'>
+                    <div className='flex gap-2 items-center flex-nowrap border-b border-gray-300 dark:border-gray-600 py-3 pl-4'>
                     <img className='' src={twiter} alt="Facebook" /><a href="#">Twiter</a>
                     </div>
                     <div className='flex gap-2 items-center flex-nowrap  py-3 pl-4'>
@@ -40,7 +40,7 @@ const RightSideNav = () => {
                     
                 </div>
             </div>
-            <div className="flex flex-col gap-3  bg-[#F3F3F3] rounded-md p-4">
+            <div className="flex flex-col gap-3  bg-[#F3F3F3] dark:bg-gray-600 rounded-md p-4">
                 <h4 className="font-medium text-xl">Q Zone</h4>
 
                 <img src={qrZone1} alt="QZone1" />

@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../Components/Header';
 import TopNav from '../Components/Shared/TopNav';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
+
+    const {userLogIn}=useContext(AuthContext);
+    const navigate=useNavigate();
+
+    const location=useLocation();
+    console.log(location);
     const handleLoginSubmit=(e)=>{
         e.preventDefault();
         console.log(e.currentTarget);
         const form= new FormData(e.currentTarget);
-        console.log(form.get('email'));
+        const email = form.get('email');
+        const password = form.get('password');
+
+        userLogIn(email,password)
+        .then(result=>{
+            console.log('User logged in', result.user);
+            navigate(location?.state ?location.state:'/');
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+
     }
     return (
         <div className='py-10 mx-auto'>

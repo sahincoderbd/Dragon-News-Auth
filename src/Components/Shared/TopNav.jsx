@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import user from '../../assets/user.png'
 import { AuthContext } from '../../context/AuthProvider';
 const TopNav = () => {
 
@@ -24,9 +23,7 @@ const TopNav = () => {
 
     <div className="dropdown md:hidden">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-        {
-          user?<img src={user.photoURL}></img>:<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
-        }
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
       </div>
       <ul
         tabIndex={0}
@@ -45,8 +42,8 @@ const TopNav = () => {
       </ul>
   </div>
   <div className="navbar-end gap-4">
-    <button className="btn btn-ghost btn-circle w-10">
-      <img className='' src={user} alt="" />
+    <button className="btn btn-ghost btn-circle w-12 h-12">
+      <img className='rounded-full' src='https://i.ibb.co/kg8cHqGn/5e74bcada58f0f3ca62e568b-featured-nick.png' alt="" />
     </button>
     <button onClick={handleStatusLogOrLogOut} className="btn btn-ghost bg-[#D72050] text-white text-base font-normal ">
      {

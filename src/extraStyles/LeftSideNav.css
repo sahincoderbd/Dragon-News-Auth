@@ -1,3 +1,8 @@
 .left-side-categorylist > li:first-child{
 background: #E7E7E7;
 }
+@media (prefers-color-scheme: dark) {
+    .left-side-categorylist > li:first-child{
+        background:#4A5565 ;
+    }
+}
