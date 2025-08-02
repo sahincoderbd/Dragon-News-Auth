@@ -5,6 +5,9 @@ import About from "../Pages/About.jsx";
 import Career from "../Pages/Career.jsx";
 import ErrorPage from "../Pages/ErrorPage.jsx";
 import NewsDetails from "../Components/NewsDetails.jsx";
+import CategoryArchive from "../Pages/CategoryArchive.jsx";
+import Login from "../Pages/Login.jsx";
+import Register from "../Pages/Register.jsx";
 
 const routes =createBrowserRouter([
     {
@@ -23,6 +26,26 @@ const routes =createBrowserRouter([
             {
                 path:'/career',
                 element:<Career></Career>
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
+            },
+            {
+                path:'/register',
+                element:<Register></Register>
+            },
+            {
+                path:'/news/category/:category_id',
+                element:<CategoryArchive></CategoryArchive>,
+                loader: async({params})=>{
+                    const response = await fetch(`https://openapi.programming-hero.com/api/news/category/${params.category_id}`)
+                     if(!response.ok){
+                       throw new Error('Failed to fetch news category');
+                     }
+                     const data =await response.json();
+                     return data.data;
+                   }
             },
             {
                 path:'/news/:_id',

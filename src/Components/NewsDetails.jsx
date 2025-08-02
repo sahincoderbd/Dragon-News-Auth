@@ -11,7 +11,7 @@ const NewsDetails = () => {
     const [newsItem]=newsDetail;
     console.log(newsItem);
 
-    const {details,author,others_info,title,thumbnail_url,image_url}=newsItem;
+    const {details,title,image_url}=newsItem;
 
     return (
         <div className='py-10 space-y-4'>

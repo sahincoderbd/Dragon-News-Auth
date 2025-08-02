@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import user from '../../assets/user.png'
+import { AuthContext } from '../../context/AuthProvider';
 const TopNav = () => {
 
     const navLinks= <>
@@ -9,6 +10,13 @@ const TopNav = () => {
         <li><Link to='/career' className='hover:text-[#D72050] focus:text-[#D72050] active:text-[#D72050]'>Career</Link></li>
     
     </>
+    const navigate=useNavigate();
+
+    const {user,logOut}=useContext(AuthContext);
+
+    const handleStatusLogOrLogOut=()=>{ 
+      user ? logOut() : navigate('/login');
+    }
 
     return (
         <div className="navbar bg-base-100">
@@ -16,7 +24,9 @@ const TopNav = () => {
 
     <div className="dropdown md:hidden">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+        {
+          user?<img src={user.photoURL}></img>:<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+        }
       </div>
       <ul
         tabIndex={0}
@@ -38,8 +48,10 @@ const TopNav = () => {
     <button className="btn btn-ghost btn-circle w-10">
       <img className='' src={user} alt="" />
     </button>
-    <button className="btn btn-ghost bg-[#D72050] text-white text-base font-normal ">
-     Login
+    <button onClick={handleStatusLogOrLogOut} className="btn btn-ghost bg-[#D72050] text-white text-base font-normal ">
+     {
+      user && 'Log Out' || 'Login'
+     }
     </button>
   </div>
 </div>
