@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import "../../extraStyles/LeftSideNav.css"
 import SportsNews from '../SportsNews';
 
-export const handleFilterCategory=(filter='all')=>{
-    const lowerChar=filter.toLowerCase();
-    console.log(lowerChar);
-}
+
+
+
 const LeftSideNav = () => {
 
     const [categories,setCategories]=useState([]);
-    const [sportsCategory,setSportsCategory]=useState([]);
+    const [categoryNews,setCategoryNews]=useState([]);
+    const [dataLength,setDataLength]=useState(4);
 
     useEffect(()=>{
        fetch('https://openapi.programming-hero.com/api/news/categories')
@@ -18,23 +17,30 @@ const LeftSideNav = () => {
         .then(data=>setCategories(data.data.news_category));
 
     },[]);
-    console.log(categories);
 
-    useEffect (()=>{
-        fetch ('https://openapi.programming-hero.com/api/news/category/04')
+    
+    const handleFilterCategory=(category_id ='04')=>{
+        fetch (`https://openapi.programming-hero.com/api/news/category/${category_id}`)
         .then(res=>res.json())
-        .then(data=>setSportsCategory(data.data));
-
+        .then(data=>setCategoryNews(data.data));
+        
+    }
+    useEffect(()=>{
+        handleFilterCategory();
+        setDataLength(4);
     },[]);
-    
-    
+
+    const handleShowMore=()=>{
+
+        setDataLength(dataLength+2);
+    }
     return (
         <div>
             <div>
-            <ul className='left-side-categorylist space-y-1 mb-3 '>
+            <ul className=' space-y-1 mb-3 '>
             {
-                categories.map(category=> <li onClick={()=>handleFilterCategory(category.category_name)} className='py-2 px-3 active:bg-[#E7E7E7] dark:active:bg-gray-600 hover:bg-[#E7E7E7] dark:hover:bg-gray-600 rounded-sm' key={category.category_id}>
-                    <Link className='w-full py-2'>{category.category_name}</Link>
+                categories.map(category=> <li onClick={()=>handleFilterCategory(category.category_id)} className='py-2 px-3 active:bg-[#E7E7E7] dark:active:bg-gray-600 hover:bg-[#E7E7E7] dark:hover:bg-gray-600 rounded-sm cursor-pointer' key={category.category_id}>
+                   {category.category_name}
                     </li>)
             }
             </ul>
@@ -42,8 +48,9 @@ const LeftSideNav = () => {
        
        <div className='grid grid-cols-1 gap-7'>
             {
-                sportsCategory.map((sportsNewsItem,idx)=><SportsNews key={idx} sportsNewsItem={sportsNewsItem}></SportsNews>)
+                categoryNews.slice(0,dataLength).map((sportsNewsItem,idx)=><SportsNews key={idx} sportsNewsItem={sportsNewsItem}></SportsNews>)
             }
+            <button onClick={handleShowMore} className={`btn text-base ${categoryNews.length===dataLength ||categoryNews.length<dataLength && 'hidden' }`}>Show More</button>
        </div>
         </div>
     );

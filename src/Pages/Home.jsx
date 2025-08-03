@@ -4,12 +4,10 @@ import BreakingNewsMarqee from '../Components/BreakingNewsMarqee';
 import TopNav from '../Components/Shared/TopNav';
 import LeftSideNav from '../Components/Shared/LeftSideNav';
 import RightSideNav from '../Components/Shared/RightSideNav';
-import { handleFilterCategory } from '../Components/Shared/LeftSideNav';
 import HomeNewsItem from '../Components/HomeNewsItem';
 const Home = () => {
 
     const [allNews,setAllNews]=useState([]);
-    const [displayNews,setDisplayNews]=useState([]);
     const [dataLength,setDataLength]=useState(2);
 
 

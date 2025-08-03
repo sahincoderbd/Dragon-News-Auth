@@ -7,7 +7,6 @@ const SportsNews = ({sportsNewsItem}) => {
     const {_id,author,title,image_url}=sportsNewsItem;
 
     const navigate=useNavigate();
-    console.log(_id);
     const handleViewNewsDetails=()=>{
         navigate(`/news/${_id}`);
     }

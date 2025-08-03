@@ -5,7 +5,6 @@ import About from "../Pages/About.jsx";
 import Career from "../Pages/Career.jsx";
 import ErrorPage from "../Pages/ErrorPage.jsx";
 import NewsDetails from "../Components/NewsDetails.jsx";
-import CategoryArchive from "../Pages/CategoryArchive.jsx";
 import Login from "../Pages/Login.jsx";
 import Register from "../Pages/Register.jsx";
 import PrivateRoutes from "./PrivateRoutes.jsx";

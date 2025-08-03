@@ -6,7 +6,6 @@ import { BsEye, BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 
 
 const HomeNewsItem = ({ newsItem }) => {
-    console.log(newsItem);
     const {_id, title, author, image_url, details,rating,total_view
     } = newsItem;
 
