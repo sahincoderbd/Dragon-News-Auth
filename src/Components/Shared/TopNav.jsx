@@ -43,7 +43,9 @@ const TopNav = () => {
   </div>
   <div className="navbar-end gap-4">
     <button className="btn btn-ghost btn-circle w-12 h-12">
-      <img className='rounded-full' src='https://i.ibb.co/kg8cHqGn/5e74bcada58f0f3ca62e568b-featured-nick.png' alt="" />
+      {
+        user?.photoURL?<img className='rounded-full' src={user.photoURL} alt="" />:<img className='rounded-full' src='https://i.ibb.co/kg8cHqGn/5e74bcada58f0f3ca62e568b-featured-nick.png' alt="" />
+      }
     </button>
     <button onClick={handleStatusLogOrLogOut} className="btn btn-ghost bg-[#D72050] text-white text-base font-normal ">
      {
