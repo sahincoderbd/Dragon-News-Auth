@@ -20,7 +20,7 @@ const NewsDetails = () => {
             
             <div className='col-span-3 space-y-3 '>
             <h4 className='font-bold'>Dragon News</h4>
-            <div className='p-4 rounded-md border-2 border-gray-300 space-y-3'>
+            <div className='p-4 rounded-md border-2 border-gray-300 dark:border-gray-600 space-y-3'>
                 <img className='w-full' src={image_url} alt={title} />
                 <h2 className='text-2xl font-bold'>{title}</h2>
                 <p>{details}</p>
